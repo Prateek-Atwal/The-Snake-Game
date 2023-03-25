@@ -19,12 +19,12 @@ sc.onkeypress(snake.up, "Up")
 sc.onkeypress(snake.down, "Down")
 sc.onkeypress(snake.left, "Left")
 sc.onkeypress(snake.right, "Right")
-
+snake_speed = 0.1
 game_is_on = True
 while game_is_on:
     sc.update()
     snake.move(20)
-    time.sleep(0.1)
+    time.sleep(snake_speed)
     if (snake.bit_itself() or snake.head.xcor() > 290 or snake.head.xcor() < -290 or snake.head.ycor() > 280
             or snake.head.ycor() < -290):
         game_is_on = False
@@ -35,5 +35,6 @@ while game_is_on:
         sb.update_score()
         snake.extend()
         food.refresh()
+        snake_speed *= 0.9
 
 sc.exitonclick()
